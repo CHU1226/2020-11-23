@@ -111,11 +111,14 @@ var vm = new Vue({
 		remove(product){
 			product.amount = 0
 		},
-		social(){
+		checkout(){
 			alert('目前尚無網路 請稍後再試')
 		},
 		subscript(){
 			alert('成功訂閱')
+		},
+		next(){
+			alert('確認訂購')
 		}
 	},
 	computed: {

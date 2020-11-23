@@ -9,18 +9,18 @@ $(function(){
 		if($(window).scrollTop()>0)
 			$('.left,.right').addClass('center')
 	});
-//	text("year",2000,2020)
-//	text("month",0,11)
-//	text("date",0,22)
-//	function text(className,start,end){
-//		var timer = setInterval(() => {
-//			start++
-//			$('.'+className).text(start);
-//			if(start >= end){
-//				clearInterval(timer)
-//			}
-//		})
-//	};
+	text("people",12700,13000)
+	text("join",200,500)
+	text("share",500,800)
+	function text(className,start,end){
+		var timer = setInterval(() => {
+			start++
+			$('.'+className).text(start + "+");
+			if(start >= end){
+				clearInterval(timer)
+			}
+		})
+	};
 	$('.claryfi li:first').addClass('bg-gray')
 	$('.claryfi li').click(function(){
 		$(this).addClass('bg-gray').siblings().removeClass()
@@ -62,6 +62,5 @@ $(function(){
 	$('.select-box .col-md-4:first').addClass('bg-gray');
 	$('.select-box .col-md-4').click(function(){
 		$(this).addClass('bg-gray').siblings().removeClass('bg-gray');
-//		$(this).find('i').addClass('icon-green').siblings().removeClass('icon-green');
 	})
 })
