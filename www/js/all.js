@@ -21,8 +21,8 @@ $(function(){
 			}
 		})
 	};
-	$('.claryfi li:first').addClass('bg-gray')
-	$('.claryfi li').click(function(){
+	$('.team li:first').addClass('bg-gray')
+	$('.team li').click(function(){
 		$(this).addClass('bg-gray').siblings().removeClass()
 	});
 	$('.pd-block:first').addClass('bg-green')
