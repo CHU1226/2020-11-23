@@ -118,6 +118,12 @@ p{
 	font-family: "華康超明體";
 	letter-spacing: 10px
 }
+.title-box th,
+.title-box td{
+	font-size: 35px;
+	padding: 5px;
+	text-align: center
+}
 .title-box i{
 	font-size: 75px;
 	color: #fff;
@@ -273,12 +279,6 @@ progress{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-.data{
-	justify-content: flex-start;
-}
-.article-imgbx{
-	justify-content: flex-end;
 }
 .option-box .btn{
 	background: #fff;
@@ -520,13 +520,8 @@ progress{
 	padding: 50px;
 	background: rgba(0,0,0,0.5)
 }
-.contact-form label{
-	display: block;
-	margin-top: 20px;
-}
-.contact-form input,
-.contact-form textarea,
-.info-box input{
+#contact input,
+.contact-form textarea{
 	border: 0;
 	background-color: transparent;
 	border-bottom: solid 1px #fff;
@@ -534,6 +529,9 @@ progress{
 	outline: none;
 	color: #fff;
 	resize: none
+}
+.from-group{
+	margin-top: 20px;
 }
 .btn-group{
 	margin-top: 20px;
@@ -708,20 +706,23 @@ footer{
 	.title-box{
 		transform: scale(0.6)
 	}
-	.alltext{
-		width: 350px;
-		height: 350px;
+	.alltext p{
+		font-size: 18px
 	}
 	.pd-block{
 		margin: 20px 0;
-		width: 80%;
+		width: 100%;
 	}
 	.pd-imgbx{
+		left: 0;
 		width: 100px;
 		height: 100px;
 	}
 	.contact-form{
 		width: 90%;
+	}
+	.pd-info span{
+		margin-right: 10px;
 	}
 }
 
