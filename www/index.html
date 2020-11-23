@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>健康醫療物聯網</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="img/home1.jpg" rel="preload" as="image">
+    <link href="img/home2.jpg" rel="preload" as="image">
+    <link href="img/home3.jpg" rel="preload" as="image">
+    <link href="img/home4.jpg" rel="preload" as="image">
+
+  </head>
+  <body>
+	  <div id="app">
+		  
+		  <div class="check">
+		  	<i class="fas fa-check"></i>
+			<h3>成功加入購物車</h3>
+		  </div>
+		  
+		  <div class="icon-bar">
+		  	<i class="fas fa-robot"></i>
+		  	<i class="fas fa-shopping-cart" data-toggle="modal" data-target="#cart"><span class="num">{{num}}</span></i>
+			  <a href="#home">
+			  	<i class="fas fa-angle-double-up"></i>
+			  </a>
+		  </div>	
+		  
+		  <div class="chatbot">
+		  	<div class="msg-box">
+			  <div class="r-ans">
+					<p>請問有什麼問題嗎?</p>
+				</div>
+			  </div>
+			  <div class="q-block">
+			  	<button class="btn q-btn" value="q1">醫療</button>
+			  	<button class="btn q-btn" value="q2">技術應用</button>
+			  	<button class="btn q-btn" value="q3">發展</button>
+			  	<button class="btn q-btn" value="q4">購物</button>
+			  </div>
+		  </div>
+		  
+		  
+		  <div class="modal fade" id="cart">
+		  	<div class="modal-dialog">
+			  	<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="mx-auto">購物車</h3>
+					</div>
+					<div class="modal-body">
+							<div class="pd-info" v-for="product in productInCart">
+								<img :src="product.img" alt="">
+								<div>
+									<b>{{product.name}}</b>
+									<div class="between">
+										<span>數量<br>{{product.amount}}</span>
+										<span>單價<br>{{product.price}}</span>
+										<span>小計<br>{{product.sum}}</span>
+									</div>
+								</div>
+								<i class="fas fa-trash-alt" @click="remove(product)"></i>
+							</div>
+						</div>
+					<div class="modal-footer">
+						<form class="w-100">
+							<div class="d-flex">
+								<input type="text" class="form-control w-50" placeholder="請輸入姓名" required>
+								<input type="text" class="form-control w-50" placeholder="請輸入電話" required>
+							</div>
+							<div class="d-flex">
+								<input type="text" class="form-control w-50" placeholder="請輸入信箱" required>
+								<input type="text" class="form-control w-50" placeholder="請輸入地址" required>
+							</div>
+							<div class="price-box">
+								總計: {{total}}元
+								<button class="btn btn-success next">下一步</button>
+								<button class="btn btn-danger" data-dismiss="modal">關閉</button>
+							</div>
+						</form>
+					</div>		
+			  </div>
+		  </div>
+		</div>
+		  
+	  	<nav class="navbar navbar-expand-lg fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#"><img class="logo" src="img/logo.png" alt=""></a>
+			   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  	<i class="fas fa-bars"></i>
+			   </button>
+			   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				  <ul class="navbar-nav ml-auto">
+					 <li class="nav-item">
+						<i clss="fas fa-house"></i><a class="nav-link" href="#home">首　　頁</a>
+					 </li>
+					<li class="nav-item">
+						<a class="nav-link" href="#about">關於我們</a>
+					 </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#news">最新消息</a>
+					 </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#shop">商品一覽</a>
+					 </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#contact">聯絡我們</a>
+					 </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#cart" data-toggle="modal" dara-target="#cart">購物車({{num}})</a>
+					 </li>
+				  </ul>
+			   </div>
+			</div>
+		</nav>
+		  
+		  <section id="home">
+		  	<div class="container_fluid h-100">
+				<div class="row h-100">
+					<div class="col-md-3">
+						
+					</div>
+					<div class="col-md-6">
+						<a href="#about">
+							<div class="title-box">
+								<span></span>
+								<span></span>
+								<span></span>
+								<h3></h3>
+								<h1>健康醫療物聯網</h1>
+								<h3>2020 / 11 / 22</h3>
+								<i class="fas fa-angle-double-down"></i>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<ul class="home-slogan">
+							<li>善用網路科技</li>
+							<li>提供遠距照護</li>
+							<li>維護家人健康</li>
+							<li>就在 <span class="underline">醫療物聯網</span></li>
+						</ul>
+					</div>
+				</div>
+			  </div>
+		  </section>
+<!--		  home--------------------->
+		  <section id="about">
+		  	<div class="container h-100">
+			  	<div class="row ab-slogan">
+					<i class="fas fa-caret-right"></i>
+					<b>您的健康 我們守護<br>提升生活品質 由你我做起</b>
+					<i class="fas fa-caret-left"></i>
+				</div>
+				<div class="row ab-block">
+					<div class="col-md-8 m-auto left">
+						<h3>關於醫療</h3>
+						<p>台灣擁有先進醫療與資通訊（Information and Communication Technology ，ICT）技術優勢，如何在在醫療 4.0 的時代掌握智慧醫療趨勢，克服現有法規、技術標準與產品定位的挑戰，在全世界智慧醫療領域站穩一席之地，是當前政府積極推動的重點計劃。</p>
+					</div>
+					<div class="col-md-4 ab-imgbx right">
+						<img src="img/about.jpg" alt="">
+					</div>
+				</div>
+				<hr>
+				<div class="row claryfi">
+					<div class="col-md-4 m-auto left">
+						<ul>
+							<h3>團隊介紹</h3>
+							<li @click="aboutIndex = 0"><i class="fas fa-info-circle"></i>研發人員 <i class="fas fa-angle-right"></i></li>
+							<li @click="aboutIndex = 1"><i class="fas fa-info-circle"></i>研發方向 <i class="fas fa-angle-right"></i></li>
+							<li @click="aboutIndex = 2"><i class="fas fa-info-circle"></i>研發理想 <i class="fas fa-angle-right"></i></li>
+						</ul>
+					</div>
+					<div class="col-md-8 m-auto right">
+						<div class="row">
+							<div class="col-sm-4 claryfi-imgbx">
+								<img :src="about.img" alt="">
+							</div>
+							<div class="col-sm-8">
+								<h4><b>{{about.title}}</b></h4>
+								<p>{{about.content}}</p>
+								<div v-if="aboutIndex == '2'">
+									<progress max="100" value="80"></progress>
+									<label for="" class="percent">完成率80%</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+		  </section>
+<!--		  about------------------>
+		  <section id="news">
+		  	<div class="container_fluid h-100">
+			  	<div class="container">
+					<div class="row select-box">
+						<div class="col-md-4" @click="optionIndex = 1"><i class="fas fa-bullhorn"></i> 初期發展</div>
+						<div class="col-md-4" @click="optionIndex = 2"><i class="fas fa-exclamation-triangle"></i> 中期調整</div>
+						<div class="col-md-4" @click="optionIndex = 3"><i class="fas fa-hand-holding-medical"></i> 後期照護</div>
+					</div>
+					<div class="row option-box" v-if="optionIndex == '1'">
+						<button class="btn" @click="articleIndex = 0">用藥安全辨識</button>
+						<button class="btn" @click="articleIndex = 1">流程管理追蹤</button>
+						<button class="btn" @click="articleIndex = 2">長期照護管控</button>
+					</div>
+					<div class="row option-box" v-else-if="optionIndex == '2'">
+						<button class="btn" @click="articleIndex = 3">隔離病患管控</button>
+						<button class="btn" @click="articleIndex = 4">門禁管理</button>
+						<button class="btn" @click="articleIndex = 5">數位學習管理</button>
+					</div>
+					<div class="row option-box" v-else-if="optionIndex == '3'">
+						<button class="btn" @click="articleIndex = 6">洗腎照護流程</button>
+						<button class="btn" @click="articleIndex = 7">輸液管理</button>
+						<button class="btn" @click="articleIndex = 8">整合平台</button>
+					</div>
+				</div>	
+<!--				container------------->
+				<div class="row article">
+					<div class="col-md-3 article-imgbx m-auto">
+						<img :src="article.img" alt="">
+					</div>
+					<div class="col-md-5 p-4 m-auto">
+						<h3>{{article.title}}</h3>
+						<p>{{article.content}}</p>
+					</div>
+					<div class="col-md-3 data">
+						<ul>
+							<h3>研究計畫流程</h3>
+							<li>國際案例探討 <i class="fas fa-angle-down"></i></li>
+							<li>國內產業之應用探討 <i class="fas fa-angle-down delay1"></i></li>
+							<li>學術暨實物研討會 <i class="fas fa-angle-down delay2"></i></li>
+							<li>研究結果實施與應驗 </li>
+						</ul>
+					</div>
+				</div>
+			
+				<div class="block-container">
+					<div v-for="index in 2">
+						<div class="block" v-for="(imgUrl,index) in articles">
+							<img :src="imgUrl.img" alt="" @click="articleIndex = index">
+						</div>
+					</div>
+				</div>
+			  </div>
+		  </section>
+<!--		  news------------------>
+		  <section id="shop">
+		  	<div class="container h-100">
+			  	<div class="row h-100">
+					<div class="col-md-5 shop-left">
+						<div class="alltext">
+							<span></span>
+							<span></span>
+							<span></span>
+							<h3>{{product.name}}</h3>
+							<p>{{product.content}}</p>
+							<p>價格: {{product.price}}元</p>
+							<div class="action-box">
+								<i class="fas fa-minus-circle" @click="minus(product)"></i>
+								{{product.amountShow}}
+								<i class="fas fa-plus-circle" @click="plus(product)"></i>
+								<button class="btn btn-outline-secondary addToCart" @click="addToCart(product)">加入購物車</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7 shop-right">
+						<div class="pd-block" v-for="(product,index) in products" @click="productIndex = index">
+							<div class="pd-imgbx">
+								<img :src="product.img" alt="">
+							</div>
+							<div class="pd-textbx">
+								<h3>{{product.name}}</h3>
+								<p>{{product.content}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+		  </section>
+<!--		  shop------------------->
+		  <section id="contact">
+		  	<div class="container_fluid h-100">
+			  	<div class="row h-100">
+					<div class="col-md-6">
+						<div class="info-box">
+							<h2>Contact Us</h2>
+							<ul>
+								<h3>官方資訊</h3>
+								<li><i class="fas fa-id-card"></i> 官方名稱: 健康醫療互聯網</li>
+								<li><i class="fas fa-phone-alt"></i> 官方電話: 02 1234 5678</li>
+								<li><i class="fas fa-envelope"></i> 官方信箱: B048@gmail.com</li>
+								<li><i class="fas fa-headphones-alt"></i> 官方ID: B048</li>
+							</ul>
+							<ul class="fans">
+								<h3>訂閱我們</h3>
+								<li @click="social()">
+									<i class="fab fa-facebook"></i>
+									<i class="fab fa-twitter"></i>
+									<i class="fab fa-instagram"></i>
+									<i class="fab fa-line"></i>
+								</li>
+								<li>
+									信箱<input type="text" class="w-50"><button @click="subscript()" class="btn btn-outline-light">訂閱</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<form action="" class="contact-form">
+							<h3>關於我們</h3>
+							<label for="">姓名</label>
+							<input type="text">
+							<label for="">電話</label>
+							<input type="text">
+							<label for="">信箱</label>
+							<input type="text">
+							<label for="">意見回饋</label>
+							<textarea rows="3"></textarea>
+							<div class="btn-group">
+								<button class="btn btn-outline-light" @click="send()">送出</button>
+								<button class="btn btn-outline-light" type="reset">清空</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			  </div>
+		  </section>
+		  <footer>本網站使用CSS3+jQuery 具有RWD設計 建議解析度1920x1080</footer>
+		  
+<!--		  app-------------------->
+	  </div>
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.0.0.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/all.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
