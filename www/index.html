@@ -70,16 +70,16 @@
 					<div class="modal-footer">
 						<form class="w-100">
 							<div class="d-flex">
-								<input type="text" class="form-control w-50" placeholder="請輸入姓名" required>
-								<input type="text" class="form-control w-50" placeholder="請輸入電話" required>
+								<input type="text" class="form-control w-50" placeholder="請輸入姓名">
+								<input type="text" class="form-control w-50" placeholder="請輸入電話">
 							</div>
 							<div class="d-flex">
-								<input type="text" class="form-control w-50" placeholder="請輸入信箱" required>
-								<input type="text" class="form-control w-50" placeholder="請輸入地址" required>
+								<input type="text" class="form-control w-50" placeholder="請輸入信箱">
+								<input type="text" class="form-control w-50" placeholder="請輸入地址">
 							</div>
 							<div class="price-box">
 								總計: {{total}}元
-								<button class="btn btn-success next">下一步</button>
+								<button class="btn btn-success" @click="next()">下一步</button>
 								<button class="btn btn-danger" data-dismiss="modal">關閉</button>
 							</div>
 						</form>
@@ -123,7 +123,7 @@
 		  	<div class="container_fluid h-100">
 				<div class="row h-100">
 					<div class="col-md-3">
-						
+						<h3>2020 / 11 / 23</h3>
 					</div>
 					<div class="col-md-6">
 						<a href="#about">
@@ -133,7 +133,20 @@
 								<span></span>
 								<h3></h3>
 								<h1>健康醫療物聯網</h1>
-								<h3>2020 / 11 / 22</h3>
+								<table>
+									<tbody>
+										<tr>
+											<th>瀏覽人數</th>
+											<th>參與數</th>
+											<th>分享數</th>
+										</tr>
+										<tr>
+											<td><em class="people"></em></td>
+											<td><em class="join"></em></td>
+											<td><em class="share"></em></td>
+										</tr>
+									</tbody>
+								</table>
 								<i class="fas fa-angle-double-down"></i>
 							</div>
 						</a>
@@ -221,7 +234,7 @@
 				</div>	
 <!--				container------------->
 				<div class="row article">
-					<div class="col-md-3 article-imgbx m-auto">
+					<div class="col-md-4 article-imgbx">
 						<img :src="article.img" alt="">
 					</div>
 					<div class="col-md-5 p-4 m-auto">
@@ -238,14 +251,15 @@
 						</ul>
 					</div>
 				</div>
-			
-				<div class="block-container">
-					<div v-for="index in 2">
-						<div class="block" v-for="(imgUrl,index) in articles">
-							<img :src="imgUrl.img" alt="" @click="articleIndex = index">
+				<a href="#news">
+					<div class="block-container">
+						<div v-for="index in 2">
+							<div class="block" v-for="(imgUrl,index) in articles">
+								<img :src="imgUrl.img" alt="" @click="articleIndex = index">
+							</div>
 						</div>
-					</div>
-				</div>
+					</div>	
+				</a>				
 			  </div>
 		  </section>
 <!--		  news------------------>
@@ -298,11 +312,11 @@
 							</ul>
 							<ul class="fans">
 								<h3>訂閱我們</h3>
-								<li @click="social()">
-									<i class="fab fa-facebook"></i>
-									<i class="fab fa-twitter"></i>
-									<i class="fab fa-instagram"></i>
-									<i class="fab fa-line"></i>
+								<li>
+									<i @click="checkout()" class="fab fa-facebook"></i>
+									<i @click="checkout()" class="fab fa-twitter"></i>
+									<i @click="checkout()" class="fab fa-instagram"></i>
+									<i @click="checkout()" class="fab fa-line"></i>
 								</li>
 								<li>
 									信箱<input type="text" class="w-50"><button @click="subscript()" class="btn btn-outline-light">訂閱</button>
@@ -313,16 +327,24 @@
 					<div class="col-md-6">
 						<form action="" class="contact-form">
 							<h3>關於我們</h3>
-							<label for="">姓名</label>
-							<input type="text">
-							<label for="">電話</label>
-							<input type="text">
-							<label for="">信箱</label>
-							<input type="text">
-							<label for="">意見回饋</label>
-							<textarea rows="3"></textarea>
+							<div class="form-group">
+								<label for="">姓名</label>
+								<input type="text">
+							</div>
+							<div class="form-gruop">
+								<label for="">電話</label>
+								<input type="text">
+							</div>
+							<div class="from-group">
+								<label for="">信箱</label>
+								<input type="text">
+							</div>
+							<div class="from-group">
+								<label for="">意見回饋</label>
+								<textarea rows="3"></textarea>
+							</div>
 							<div class="btn-group">
-								<button class="btn btn-outline-light" @click="send()">送出</button>
+								<button class="btn btn-outline-light" @click.parent="checkout()">送出</button>
 								<button class="btn btn-outline-light" type="reset">清空</button>
 							</div>
 						</form>
